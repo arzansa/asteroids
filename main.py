@@ -1,8 +1,8 @@
 import pygame
 from constants import *
-from player import *
-from asteroid import *
-from asteroidfield import *
+from player import Player
+from asteroid import Asteroid
+from asteroidfield import AsteroidField
 
 def main():
     print("Starting asteroids!")
@@ -23,8 +23,8 @@ def main():
     asteroid_field = AsteroidField()
     
     Player.containers = (updatable, drawable)
-    # updatable.add(player)
-    # drawable.add(player)
+    updatable.add(player)
+    drawable.add(player)
     
     
     while True:
@@ -35,7 +35,7 @@ def main():
         for item in updatable:
             item.update(dt)
         for item in drawable:
-            player.draw(screen)
+            item.draw(screen)
              
         pygame.display.flip()
         dt = clock.tick(60) / 1000
